@@ -6,6 +6,8 @@ export class Search {
     this.productItem = page.locator("div div.product-thumb");
     this.productTitle = page.locator(".caption");
   }
+
+  // Verify all returned product title contains inputted text
   async verifyAllProductTitleContains(text) {
     const count = await this.productTitle.count();
     for (let i = 0; i < count; i++) {
