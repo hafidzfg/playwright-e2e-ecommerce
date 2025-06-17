@@ -13,4 +13,5 @@ test('Search for "laptop" then verify relevant results are returned', async ({
 
   await expect(searchPage.productItem.first()).toBeVisible();
   await expect(searchPage.productText.first()).toBeVisible();
+  await homePage.verifyAllProductTitleContains("Laptop");
 });
