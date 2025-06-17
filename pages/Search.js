@@ -1,13 +1,15 @@
+import { expect } from "@playwright/test";
+
 export class Search {
   constructor(page) {
     this.page = page;
-    this.productItem = page.locator("div.product-item");
-    this.productText = page.locator("h2.product-title a");
+    this.productItem = page.locator("div div.product-thumb");
+    this.productTitle = page.locator(".caption");
   }
   async verifyAllProductTitleContains(text) {
-    const count = await this.productText.count();
-    for (i = 0; i < count; i++) {
-      await expect(searchPage.productText.nth(i)).toContainText(text, {
+    const count = await this.productTitle.count();
+    for (let i = 0; i < count; i++) {
+      await expect(this.productTitle.nth(i)).toContainText(text, {
         ignoreCase: true,
       });
     }

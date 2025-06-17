@@ -2,16 +2,16 @@ import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/HomePage";
 import { Search } from "../pages/Search";
 
-test('Search for "laptop" then verify relevant results are returned', async ({
+test('Search for "iphone" then verify relevant results are returned', async ({
   page,
 }) => {
   const homePage = new HomePage(page);
   const searchPage = new Search(page);
   await homePage.goto();
-  await homePage.searchInput.fill("Laptop");
+  await homePage.searchInput.fill("iphone");
   await homePage.searchButton.click();
 
   await expect(searchPage.productItem.first()).toBeVisible();
-  await expect(searchPage.productText.first()).toBeVisible();
-  await homePage.verifyAllProductTitleContains("Laptop");
+  await expect(searchPage.productTitle.first()).toBeVisible();
+  await searchPage.verifyAllProductTitleContains("iphone");
 });
