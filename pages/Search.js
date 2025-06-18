@@ -5,6 +5,9 @@ export class Search {
     this.page = page;
     this.productItem = page.locator("div div.product-thumb");
     this.productTitle = page.locator(".caption");
+    this.noResultMessage = page.getByText(
+      "There is no product that matches the search criteria."
+    );
   }
 
   // Verify all returned product title contains inputted text
